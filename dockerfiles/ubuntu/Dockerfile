@@ -13,4 +13,5 @@ RUN apt-get update && apt-get install -y  \
   lmod                                    \
   && rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ['entry.sh']
+COPY ./entry.sh /entry.sh
+ENTRYPOINT ['/entry.sh']
