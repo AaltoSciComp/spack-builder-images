@@ -12,3 +12,5 @@ RUN apt-get update && apt-get install -y  \
   python-yaml                             \
   lmod                                    \
   && rm -rf /var/lib/apt/lists/*
+
+ENTRYPOINT ['entry.sh']
