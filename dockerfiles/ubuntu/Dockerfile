@@ -13,6 +13,10 @@ RUN apt-get update && apt-get install -y  \
   lmod                                    \
   && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y  \
+  tcl                                     \
+  && rm -rf /var/lib/apt/lists/*
+
 COPY ./entry.sh /entry.sh
 
 ENTRYPOINT ["/entry.sh"]

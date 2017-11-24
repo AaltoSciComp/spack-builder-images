@@ -11,6 +11,7 @@ fi
 if [[ "$#" -eq 0 ]]; then 
   cd /build
   exec python install.py
+else
+  exec "$@"
 fi
 
-exec "$@"
