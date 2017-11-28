@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y  \
 
 RUN apt-get update && apt-get install -y  \
   tcl                                     \
+  bash-completion                         \
   && rm -rf /var/lib/apt/lists/*
 
 COPY ./entry.sh /entry.sh
