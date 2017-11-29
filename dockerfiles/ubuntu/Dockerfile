@@ -18,6 +18,10 @@ RUN apt-get update && apt-get install -y  \
   bash-completion                         \
   && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir /build
+
+COPY ./lmod.lmodrc.lua /etc/lmod.lmodrc.lua
+
 COPY ./entry.sh /entry.sh
 
 ENTRYPOINT ["/entry.sh"]
