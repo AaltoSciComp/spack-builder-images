@@ -10,7 +10,7 @@ if [[ "$#" -eq 0 ]]; then
   cd /build
   python install.py
   exit $?
-else
+elif [[ "$1" == "lmod" ]]; then
   [[ -f /usr/share/lmod/5.8/init/bash ]] && . /usr/share/lmod/5.8/init/bash
 
   _python_command=$(printf  "%s\\\n%s\\\n%s" \
@@ -23,5 +23,8 @@ else
   module unuse "${_sp_tcl_root%/}/$_sp_sys_type"
   module use "${_sp_lmod_root%/}/$_sp_sys_type"
 
+  exec "${@:2}"
+else
+  cd /build
   exec "$@"
 fi
