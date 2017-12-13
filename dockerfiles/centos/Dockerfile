@@ -8,10 +8,7 @@ RUN yum update -y && yum install -y       \
   cmake                                   \
   curl                                    \
   git                                     \
-  lua                                     \
-  lua-devel                               \
-  lua-filesystem                          \
-  lua-posix                               \
+  Lmod                                    \
   openssh                                 \
   python                                  \
   python-yaml                             \
