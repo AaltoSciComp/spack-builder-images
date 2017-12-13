@@ -53,6 +53,7 @@ RUN yum update -y && yum install -y       \
   libX11                                  \
   libXext                                 \
   libXt                                   \
+  libXt-devel                             \
   libgcc                                  \
   libjpeg-turbo                           \
   libogg                                  \
