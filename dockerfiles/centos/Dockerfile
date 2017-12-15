@@ -1,5 +1,9 @@
 FROM centos:centos7
 
+RUN yum install -y epel-release           \
+  && yum update -y                        \
+  && yum clean all
+
 RUN yum groupinstall -y "Development Tools" \
   && yum clean all
 
@@ -17,9 +21,7 @@ RUN yum update -y && yum install -y       \
   which                                   \
   && yum clean all
 
-RUN yum install -y epel-release           \
-  && yum clean all
-
+# Paraview dependencies
 RUN yum update -y && yum install -y       \
   mesa-dri-drivers                        \
   mesa-filesystem                         \
@@ -38,7 +40,7 @@ RUN yum update -y && yum install -y       \
   mesa-private-llvm                       \
   && yum clean all
 
-# Paraview dependencies
+# More Paraview dependencies
 RUN yum update -y && yum install -y       \
   expat                                   \
   freetype                                \
@@ -71,6 +73,7 @@ RUN yum update -y && yum install -y       \
   python-pygments                         \
   python-six                              \
   qt                                      \
+  qt-devel                                \
   qt-x11                                  \
   zlib                                    \
   && yum clean all
