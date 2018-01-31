@@ -11,13 +11,13 @@ RUN apt-get update && apt-get install -y  \
   python                                  \
   python-yaml                             \
   lmod                                    \
-  && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && apt-get install -y  \
+  unzip                                   \
   tcl                                     \
   bash-completion                         \
   && rm -rf /var/lib/apt/lists/*
 
+
+# Paraview dependencies
 RUN apt-get update && apt-get install -y  \
   libgl1-mesa-dri                         \
   libgl1-mesa-glx                         \
@@ -32,10 +32,6 @@ RUN apt-get update && apt-get install -y  \
   libxt6                                  \
   libxt-dev                               \
   libx11-6                                \
-  && rm -rf /var/lib/apt/lists/*
-
-# Paraview dependencies
-RUN apt-get update && apt-get install -y  \
   tcl8.5                                  \
   libxt6                                  \
   libavcodec-ffmpeg56                     \

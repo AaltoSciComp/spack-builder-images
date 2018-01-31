@@ -4,9 +4,12 @@ RUN yum install -y epel-release           \
   && yum update -y                        \
   && yum clean all
 
-RUN yum groupinstall -y "Development Tools" \
+RUN yum groups mark install "Development Tools" \
+  && yum groups mark convert "Development Tools" \
+  && yum groupinstall -y "Development Tools" \
   && yum clean all
 
+# Base dependensies
 RUN yum update -y && yum install -y       \
   bash-completion                         \
   cmake                                   \
@@ -19,6 +22,7 @@ RUN yum update -y && yum install -y       \
   tcl                                     \
   wget                                    \
   which                                   \
+  unzip                                   \
   && yum clean all
 
 # Paraview dependencies
@@ -38,10 +42,6 @@ RUN yum update -y && yum install -y       \
   mesa-libgbm                             \
   mesa-libglapi                           \
   mesa-private-llvm                       \
-  && yum clean all
-
-# More Paraview dependencies
-RUN yum update -y && yum install -y       \
   expat                                   \
   freetype                                \
   gl2ps                                   \
@@ -77,6 +77,15 @@ RUN yum update -y && yum install -y       \
   qt-x11                                  \
   zlib                                    \
   && yum clean all
+
+COPY RPM-GPG-KEY-CSC-GRID-2 /etc/pki/rpm-gpg/RPM-GPG-KEY-CSC-GRID-2
+COPY fgislurm.repo /etc/yum.repos.d/fgislurm.repo
+
+RUN yum update -y && yum install -y       \
+  slurm                                   \
+  slurm-devel                             \
+  && yum clean all
+
 
 RUN mkdir /build
 

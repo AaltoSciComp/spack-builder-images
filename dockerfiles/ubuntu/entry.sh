@@ -2,16 +2,17 @@
 
 #export LMOD_RC=/etc/lmod.lmodrc.lua
 
-[[ -f /opt/spack/share/spack/setup-env.sh ]] && . /opt/spack/share/spack/setup-env.sh
-
 [[ -f /opt/local/etc/bash_completion ]] && . /opt/local/etc/bash_completion
+  
+[[ -f /usr/share/lmod/lmod/init/bash ]] && . /usr/share/lmod/lmod/init/bash
+
+[[ -f /opt/spack/share/spack/setup-env.sh ]] && . /opt/spack/share/spack/setup-env.sh
 
 if [[ "$#" -eq 0 ]]; then 
   cd /build
   python install.py
   exit $?
 elif [[ "$1" == "lmod" ]]; then
-  [[ -f /usr/share/lmod/5.8/init/bash ]] && . /usr/share/lmod/5.8/init/bash
 
   _python_command=$(printf  "%s\\\n%s\\\n%s" \
   "print(\'_sp_tcl_root={0}\'.format(spack.util.path.canonicalize_path(spack.config.get_config(\'config\').get(\'module_roots\', {}).get(\'tcl\'))))" \
