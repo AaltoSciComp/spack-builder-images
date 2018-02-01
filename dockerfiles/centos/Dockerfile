@@ -23,6 +23,7 @@ RUN yum update -y && yum install -y       \
   wget                                    \
   which                                   \
   unzip                                   \
+  rsync                                   \
   && yum clean all
 
 # Paraview dependencies
@@ -47,9 +48,6 @@ RUN yum update -y && yum install -y       \
   gl2ps                                   \
   glibc                                   \
   glibc                                   \
-  hdf5                                    \
-  hdf5-mpich                              \
-  hdf5-openmpi                            \
   libICE                                  \
   libSM                                   \
   libX11                                  \
@@ -64,17 +62,7 @@ RUN yum update -y && yum install -y       \
   libtheora                               \
   libtiff                                 \
   libxml2                                 \
-  netcdf                                  \
-  netcdf-cxx                              \
-  paraview-data                           \
   protobuf                                \
-  python-libs                             \
-  python-matplotlib                       \
-  python-pygments                         \
-  python-six                              \
-  qt                                      \
-  qt-devel                                \
-  qt-x11                                  \
   zlib                                    \
   && yum clean all
 
@@ -82,10 +70,11 @@ COPY RPM-GPG-KEY-CSC-GRID-2 /etc/pki/rpm-gpg/RPM-GPG-KEY-CSC-GRID-2
 COPY fgislurm.repo /etc/yum.repos.d/fgislurm.repo
 
 RUN yum update -y && yum install -y       \
+  libibverbs                              \
+  libibverbs-devel                        \
   slurm                                   \
   slurm-devel                             \
   && yum clean all
-
 
 RUN mkdir /build
 
