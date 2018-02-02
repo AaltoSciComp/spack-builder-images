@@ -63,6 +63,13 @@ RUN yum update -y && yum install -y       \
   libtiff                                 \
   libxml2                                 \
   protobuf                                \
+  python-libs                             \
+  python-matplotlib                       \
+  python-pygments                         \
+  python-six                              \
+  qt                                      \
+  qt-devel                                \
+  qt-x11                                  \
   zlib                                    \
   && yum clean all
 
