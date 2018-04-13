@@ -81,6 +81,7 @@ RUN yum update -y && yum install -y       \
   libibverbs-devel                        \
   slurm                                   \
   slurm-devel                             \
+  slurm-libpmi                            \
   && yum clean all
 
 RUN mkdir /build
