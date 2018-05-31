@@ -6,7 +6,7 @@
 
 [[ -f /opt/local/etc/bash_completion ]] && . /opt/local/etc/bash_completion
 
-[[ -f /opt/spack/share/spack/setup-env.sh ]] && cd /opt/spack && git pull && . /opt/spack/share/spack/setup-env.sh
+[[ -f /opt/spack/share/spack/setup-env.sh ]] && . /opt/spack/share/spack/setup-env.sh
 
 if [[ "$#" -eq 0 ]]; then 
   cd /build
