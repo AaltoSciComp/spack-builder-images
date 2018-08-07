@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #export LMOD_RC=/etc/lmod.lmodrc.lua
-
-[[ -f /opt/local/etc/bash_completion ]] && . /opt/local/etc/bash_completion
   
 [[ -f /usr/share/lmod/lmod/init/bash ]] && . /usr/share/lmod/lmod/init/bash
+
+[[ -f /opt/local/etc/bash_completion ]] && . /opt/local/etc/bash_completion
 
 [[ -f /opt/spack/share/spack/setup-env.sh ]] && . /opt/spack/share/spack/setup-env.sh
 
@@ -22,7 +22,7 @@ elif [[ "$1" == "lmod" ]]; then
   _assignment_command=$(spack-python -c "exec('${_python_command}')")
   eval ${_assignment_command}
   module unuse "${_sp_tcl_root%/}/$_sp_sys_type"
-  module use "${_sp_lmod_root%/}/$_sp_sys_type/Core"
+  module use "${_sp_lmod_root%/}/$_sp_sys_type"
 
   exec "${@:2}"
 else
