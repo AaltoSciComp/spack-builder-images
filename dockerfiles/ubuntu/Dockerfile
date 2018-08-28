@@ -71,6 +71,21 @@ RUN apt-get update && apt-get install -y  \
   python-twisted                          \
   && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && \
+  apt-get dist-upgrade -y \
+  && rm -rf /var/lib/apt/lists/*
+
+# GCC dependencies
+RUN apt-get update && apt-get install -y  \
+  m4 \
+  perl \
+  && rm -rf /var/lib/apt/lists/*
+
+# For openssl development headers
+RUN apt-get update && apt-get install -y  \
+  libssl-dev \
+  && rm -rf /var/lib/apt/lists/*
+
 RUN mkdir /build
 
 COPY ./lmod.lmodrc.lua /etc/lmod.lmodrc.lua
@@ -78,8 +93,4 @@ COPY ./lmod.lmodrc.lua /etc/lmod.lmodrc.lua
 COPY ./entry.sh /entry.sh
 
 ENTRYPOINT ["/entry.sh"]
-
-RUN apt-get update && \
-  apt-get dist-upgrade -y \
-  && rm -rf /var/lib/apt/lists/*
 

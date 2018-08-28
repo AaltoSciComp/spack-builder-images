@@ -84,6 +84,11 @@ RUN yum update -y && yum install -y       \
   slurm-libpmi                            \
   && yum clean all
 
+
+RUN yum update -y && yum install -y       \
+  openssl-devel                           \
+  && yum clean all
+
 RUN mkdir /build
 
 COPY ./lmod.lmodrc.lua /etc/lmod.lmodrc.lua

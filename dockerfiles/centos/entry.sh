@@ -15,8 +15,8 @@ if [[ "$#" -eq 0 ]]; then
 elif [[ "$1" == "lmod" ]]; then
 
   _python_command=$(printf  "%s\\\n%s\\\n%s" \
-  "print(\'_sp_tcl_root={0}\'.format(spack.util.path.canonicalize_path(spack.config.get_config(\'config\').get(\'module_roots\', {}).get(\'tcl\'))))" \
-  "print(\'_sp_lmod_root={0}\'.format(spack.util.path.canonicalize_path(spack.config.get_config(\'config\').get(\'module_roots\', {}).get(\'lmod\'))))"
+  "print(\'_sp_tcl_root={0}\'.format(spack.util.path.canonicalize_path(spack.config.get(\'config\').get(\'module_roots\', {}).get(\'tcl\'))))" \
+  "print(\'_sp_lmod_root={0}\'.format(spack.util.path.canonicalize_path(spack.config.get(\'config\').get(\'module_roots\', {}).get(\'lmod\'))))"
   )
 
   _assignment_command=$(spack-python -c "exec('${_python_command}')")
