@@ -84,9 +84,15 @@ RUN yum update -y && yum install -y       \
   slurm-libpmi                            \
   && yum clean all
 
-
+# Install system openssl
 RUN yum update -y && yum install -y       \
   openssl-devel                           \
+  && yum clean all
+
+# Install libffi,libffi-devel for Python3 setuptools
+RUN yum update -y && yum install -y       \
+  libffi                                  \
+  libffi-devel                            \
   && yum clean all
 
 RUN mkdir /build
@@ -94,5 +100,9 @@ RUN mkdir /build
 COPY ./lmod.lmodrc.lua /etc/lmod.lmodrc.lua
 
 COPY ./entry.sh /entry.sh
+
+COPY ./spack_timestamps.sh /usr/local/bin/spack_timestamps
+
+RUN chmod +x /usr/local/bin/spack_timestamps
 
 ENTRYPOINT ["/entry.sh"]

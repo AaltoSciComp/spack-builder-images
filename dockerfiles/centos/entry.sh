@@ -22,7 +22,7 @@ elif [[ "$1" == "lmod" ]]; then
   _assignment_command=$(spack-python -c "exec('${_python_command}')")
   eval ${_assignment_command}
   module unuse "${_sp_tcl_root%/}/$_sp_sys_type"
-  module use "${_sp_lmod_root%/}/$_sp_sys_type"
+  module use "${_sp_lmod_root%/}/$_sp_sys_type/Core"
 
   exec "${@:2}"
 else

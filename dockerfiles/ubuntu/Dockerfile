@@ -86,11 +86,20 @@ RUN apt-get update && apt-get install -y  \
   libssl-dev \
   && rm -rf /var/lib/apt/lists/*
 
+# For rstudio
+RUN apt-get update && apt-get install -y \
+  libpam-dev \
+  && rm -rf /var/lib/apt/lists/*
+
 RUN mkdir /build
 
 COPY ./lmod.lmodrc.lua /etc/lmod.lmodrc.lua
 
 COPY ./entry.sh /entry.sh
+
+COPY ./spack_timestamps.sh /usr/local/bin/spack_timestamps
+
+RUN chmod +x /usr/local/bin/spack_timestamps
 
 ENTRYPOINT ["/entry.sh"]
 
