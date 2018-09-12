@@ -95,6 +95,11 @@ RUN yum update -y && yum install -y       \
   libffi-devel                            \
   && yum clean all
 
+# Install pam-devel for rstudio setuptools
+RUN yum update -y && yum install -y       \
+  pam-devel                               \
+  && yum clean all
+
 RUN mkdir /build
 
 COPY ./lmod.lmodrc.lua /etc/lmod.lmodrc.lua
